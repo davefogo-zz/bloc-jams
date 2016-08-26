@@ -58,8 +58,8 @@ body.landing {
 }
 
 .point {
-  display: table-cell;
   position: relative;
+  display: table-cell;
   width: 33.3%;
   padding: 2rem;
   text-align: center;
