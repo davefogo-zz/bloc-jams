@@ -29,7 +29,6 @@ body.landing {
 .navbar .logo {
     position: relative;
     left: 2rem;
-<<<<<<< Updated upstream
     cursor: pointer;
 }
 
@@ -66,8 +65,6 @@ body.landing {
 .links-container .navbar-link:active {
     color: rgb(233, 50, 117);
     background-color: white;
-=======
->>>>>>> Stashed changes
 }
 
 .container {
@@ -75,13 +72,9 @@ body.landing {
     max-width: 64rem;
 }
 
-<<<<<<< Updated upstream
 .container.narrow {
     max-width: 56rem;
 }
-
-=======
->>>>>>> Stashed changes
 /* Medium and small screens (640px)*/
 @media (min-width: 640px) {
     html { font-size: 112%; }
@@ -90,28 +83,18 @@ body.landing {
         padding-left: 1rem;
         padding-right: 1rem;
     }
-<<<<<<< Updated upstream
+
     .column.full { width: 100%; }
     .column.two-thirds { width: 66.7%; }
     .column.half { width: 50%; }
     .column.third { width:  33.3%; }
     .column.fourth { width: 25%; }
     .column.flow-opposite { float: right; }
-=======
-    .column .full { width: 100%; }
-    .column .two-thirds { width: 66.7%; }
-    .column .half { width: 50%; }
-    .column .third { width:  33.3%; }
-    .column .fourth { width: 25%; }
-    .column .flow-opposite { float: right; }
->>>>>>> Stashed changes
 }
 
 /* Large screens (1024px)*/
 @media (min-width: 1024px) {
     html { font-size: 120%; }
-<<<<<<< Updated upstream
-}
 
 /* Clearfixes */
 
@@ -123,6 +106,4 @@ body.landing {
 
 .clearfix::after {
     clear: both;
-=======
->>>>>>> Stashed changes
 }
