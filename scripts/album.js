@@ -1,3 +1,4 @@
+
 var albumPicasso = {
   title: 'The Colors',
   artist: 'Pablo Picasso',
@@ -13,7 +14,7 @@ var albumPicasso = {
   ]
 };
 
-var albumMarconi = {
+ var albumMarconi = {
   title: 'The Telephone',
   artist: 'Guglielmo Marconi',
   label: 'EM',
@@ -25,6 +26,21 @@ var albumMarconi = {
     {title: 'Fits in your pocket', duration: '3:21'},
     {title: 'Can you hear me now?', duration: '3:14'},
     {title: 'Wrong phone number', duration: '2:15'}
+  ]
+};
+
+var albumBlink = {
+  title: 'Blink-182',
+  artist: 'Blink-182',
+  label: 'Sony',
+  year: '2003',
+  albumArtUrl: 'assets/images/album_covers/22.jpg',
+  songs: [
+    {title: 'Feeling This', duration: '2:53'},
+    {title: 'Obvious', duration: '2:44'},
+    {title: 'I Miss You', duration: '3:47'},
+    {title: 'Violence', duration: '5:20'},
+    {title: 'Stockholm Syndrome', duration: '2:41'}
   ]
 };
 
@@ -59,6 +75,30 @@ var setCurrentAlbum = function(album) {
   }
 };
 
-window.onload = function() {
-  setCurrentAlbum(albumMarconi);
+window.onload = function(event) {
+
+  setCurrentAlbum(albumPicasso);
+
+  var albumCover = document.getElementsByClassName('album-cover-art')[0];
+
+  albumCover.addEventListener('click', firstClick);
+
+  function firstClick(e){
+    setCurrentAlbum(albumMarconi)
+    e.stopImmediatePropagation();
+    this.removeEventListener('click', firstClick)
+    document.onclick = secondClick;
+  };
+  function secondClick(e){
+    setCurrentAlbum(albumBlink)
+    e.stopImmediatePropagation();
+    this.removeEventListener('click', secondClick)
+    document.onclick = thirdClick;
+  };
+  function thirdClick(e){
+    setCurrentAlbum(albumPicasso)
+    e.stopImmediatePropagation();
+    this.removeEventListener('click', thirdClick)
+    document.onclick = firstClick;
+  };
 };
