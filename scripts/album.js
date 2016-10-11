@@ -81,24 +81,15 @@ window.onload = function(event) {
 
   var albumCover = document.getElementsByClassName('album-cover-art')[0];
 
-  albumCover.addEventListener('click', firstClick);
+  var albumChoice = [albumPicasso, albumMarconi, albumBlink]
+  var i = 0
+  albumCover.addEventListener('click', function(){
+      if (i < albumChoice.length) {
+        setCurrentAlbum(albumChoice[i]);
+        i++
+      } else {
+        i = 0
+      }
+  });
 
-  function firstClick(e){
-    setCurrentAlbum(albumMarconi)
-    e.stopImmediatePropagation();
-    this.removeEventListener('click', firstClick)
-    document.onclick = secondClick;
-  };
-  function secondClick(e){
-    setCurrentAlbum(albumBlink)
-    e.stopImmediatePropagation();
-    this.removeEventListener('click', secondClick)
-    document.onclick = thirdClick;
-  };
-  function thirdClick(e){
-    setCurrentAlbum(albumPicasso)
-    e.stopImmediatePropagation();
-    this.removeEventListener('click', thirdClick)
-    document.onclick = firstClick;
-  };
 };

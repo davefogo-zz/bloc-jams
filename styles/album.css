@@ -42,7 +42,7 @@ body.album {
     border-collapse: collapse;
 }
 
-.album-view-song-list-item{
+.album-view-song-item{
     height: 3rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
