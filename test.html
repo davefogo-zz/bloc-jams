@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Demo</title>
+        <style>
+        a.test {
+            font-weight: bold;
+        }
+        </style>
+    </head>
+    <body>
+
+        <a href="http://jquery.com/">jQuery</a>
+        <script src="scripts/jquery.js"></script>
+        <script>
+        $.get("index.html", function() {
+            myCallBack(p1, p2);
+        });
+            $('a').addClass("test");
+            $(document).ready(function() {
+                $('a').click(function(event){
+                    alert("Thanks for visiting!");
+                    event.preventDefault();
+                    $(this).hide("slow");
+                });
+            });
+        </script>
+    </body>
+</html>
