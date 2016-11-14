@@ -136,7 +136,7 @@ var previousSong = function() {
     currentSongIndex = currentAlbum.songs.length - 1;
   }
 
-  setSong(songNumber);
+  setSong(currentSongIndex + 1);
 
   $('.currently-playing .song-name').text(currentSongFromAlbum.title);
   $('.currently-playing .artist-name').text(currentAlbum.artist);
@@ -159,10 +159,8 @@ var previousSong = function() {
 //=> currentSongFromAlbum = "Fits in your pocket";
 
 var setSong = function(songNumber) {
-  if (songNumber != null) {
-    return currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
-    return currentlyPlayingSongNumber = currentSongFromAlbum.attr('data-song-number');
-  }
+     currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
+     currentlyPlayingSongNumber = parseInt(songNumber);
 };
 
 // getSongNumberCell(number) => $('.song-item-number="number")
