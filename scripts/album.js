@@ -3,7 +3,7 @@ var createSongRow = function(songNumber, songName, songLength) {
        '<tr class="album-view-song-item">'
     +  ' <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
     +  ' <td class="song-item-title">' + songName + '</td>'
-    +  ' <td class="song-item-duration">' + songLength + '</td>'
+    +  ' <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>'
     +  '</tr>'
     ;
 
@@ -94,6 +94,7 @@ var updateSeekBarWhileSongPlays = function() {
       var $seekBar = $('.seek-control .seek-bar');
 
       updateSeekPercentage($seekBar, seekBarFillRatio);
+      setCurrentTimeInPlayerBar(filterTimeCode(this.getTime()));
     });
   }
 };
@@ -164,6 +165,7 @@ var updatePlayerBarSong = function() {
   $('.currently-playing .artist-name').text(currentSongFromAlbum.artist);
   $('.currently-playing .artist-song-name').text(currentSongFromAlbum.title + ' - ' + currentSongFromAlbum.artist);
   $('.main-controls .play-pause').html(playerBarPauseButton);
+  setTotalTimeInPlayerBar(filterTimeCode(currentSongFromAlbum.duration));
 };
 
 var nextSong = function() {
@@ -173,7 +175,7 @@ var nextSong = function() {
         return currentAlbum.songs.length;
       } else {
         return index;
-      };
+      }
     };
 
     var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
@@ -262,6 +264,15 @@ var setVolume = function(volume) {
   }
 };
 
+//setCurrentTimeInPlayerBar(currentTime) => setCurrentTimeInPlayerBar(2)
+var setCurrentTimeInPlayerBar = function(currentTime) {
+  filterTimeCode($('.currently-playing .current-time').text(currentTime));
+};
+
+var setTotalTimeInPlayerBar = function(totalTime) {
+  filterTimeCode($('.currently-playing .total-time').text(totalTime));
+};
+
 // getSongNumberCell(number) => $('.song-item-number="number")
 //example
 //getSongNumberCell(2);
@@ -286,7 +297,18 @@ var togglePlayFromPlayerBar = function() {
 
 var getSongNumberCell = function(number) {
   return $('.song-item-number[data-song-number="' + number + '"]');
-}
+};
+
+var filterTimeCode = function(timeInSeconds) {
+  var seconds = Math.floor(parseFloat(timeInSeconds));
+  var minutes = Math.floor(seconds / 60);
+  var moduloMinutes = seconds % 60;
+   if (moduloMinutes < 10) {
+     return minutes + ":" + "0" + moduloMinutes;
+   } else {
+     return minutes + ":" + moduloMinutes;
+   }
+};
 
 // Album button templates
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
